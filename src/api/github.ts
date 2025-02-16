@@ -14,9 +14,9 @@ const api = axios.create({
 export const fetchRepos = async (query: string) => {
   try {
     const response = await api.get(`${API_URL}${query}`);
-    return response.data.items.slice(0, 10); // Get only the first 10 repositories
-  } catch (error) {
-    console.error("Error fetching repositories:", error);
+    return response.data.items.slice(0, 10);
+  } catch {
+    alert("Error fetching repositories");
     return [];
   }
 };
@@ -24,15 +24,19 @@ export const fetchRepos = async (query: string) => {
 export const starRepo = async (owner: string, repo: string) => {
   try {
     await api.put(`${STAR_URL}${owner}/${repo}`);
-  } catch (error) {
-    console.error("Error starring repository:", error);
+    return true;
+  } catch {
+    alert("Error starring repository");
+    return false;
   }
 };
 
 export const unstarRepo = async (owner: string, repo: string) => {
   try {
     await api.delete(`${STAR_URL}${owner}/${repo}`);
-  } catch (error) {
-    console.error("Error unstarring repository:", error);
+    return true;
+  } catch {
+    alert("Error unstarring repository");
+    return false;
   }
 };

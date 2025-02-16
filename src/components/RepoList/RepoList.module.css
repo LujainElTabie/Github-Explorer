@@ -1,0 +1,14 @@
+.spinnercontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 46px;
+}
+
+.repolistcontainer {
+  padding-bottom: 24px;
+}
+
+.norepostext {
+  margin-top: 24px;
+}
